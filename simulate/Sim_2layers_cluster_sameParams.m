@@ -1,4 +1,4 @@
-% Code based on Chenhgcheng Huang's code:
+% Code based on Chengcheng Huang's code:
 % https://github.com/hcc11/SpatialNeuronNet
 % https://github.com/hcc11/FI_SpatialNet
 % I did some merging of the codes, as well as modifications in order to
