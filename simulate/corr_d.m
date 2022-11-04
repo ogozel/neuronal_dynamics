@@ -1,3 +1,7 @@
+% Function that computes the mean correlations and covariances, as well as
+% the correlations and covariances as a function of distance, within 
+% network and between networks.
+
 % Code based on Chengcheng Huang's code:
 % https://github.com/hcc11/SpatialNeuronNet
 % https://github.com/hcc11/FI_SpatialNet

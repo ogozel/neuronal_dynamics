@@ -1,3 +1,6 @@
+% Function that generazes the feedforward and recurrent connectivity
+% matrices.
+
 % Chengcheng Huang's code:
 % https://github.com/hcc11/SpatialNeuronNet
 % https://github.com/hcc11/FI_SpatialNet

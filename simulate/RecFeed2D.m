@@ -1,3 +1,6 @@
+% Function where all the parameters are set up for the simulation, which is
+% coded in the file 'EIF1DRFfastslowSyn.c' (C code for computation time).
+
 % Code based on Chengcheng Huang's code:
 % https://github.com/hcc11/SpatialNeuronNet
 % https://github.com/hcc11/FI_SpatialNet

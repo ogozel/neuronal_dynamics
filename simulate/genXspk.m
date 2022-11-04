@@ -1,3 +1,5 @@
+% Function that generates the spikes in the input layer.
+
 % Chengcheng Huang's code:
 % https://github.com/hcc11/SpatialNeuronNet
 % https://github.com/hcc11/FI_SpatialNet

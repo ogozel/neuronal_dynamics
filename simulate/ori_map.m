@@ -1,3 +1,7 @@
+% Function that determines orientation selectivity of each neuron in the
+% grid according to an orientation column typical of non-human primate
+% visual cortex.
+
 % Chengcheng Huang's code:
 % https://github.com/hcc11/SpatialNeuronNet
 % https://github.com/hcc11/FI_SpatialNet

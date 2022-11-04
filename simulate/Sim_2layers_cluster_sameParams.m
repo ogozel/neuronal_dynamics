@@ -1,16 +1,27 @@
+% This code runs simulations of a 3-layer spiking recurrent neural network
+% L0: input layer
+% L1: Sender network
+% L2: Receiver network
+% I did set up the network in such a way that L0 consists of homogeneous
+% Poisson processes (in space and in time), and L1 and L2 have the same
+% parameters and hence are equivalent. I run 30 trials of 20s each for each
+% parameter set. Each parameter set differs from the standard network only
+% by the modification of sigma_I_rec or tau_I_decay in L1 or in L2.
+
 % Code based on Chengcheng Huang's code:
 % https://github.com/hcc11/SpatialNeuronNet
 % https://github.com/hcc11/FI_SpatialNet
 % I did some merging of the codes, as well as modifications in order to
 % have the type of stimulations and outputs needed for my project
 
-% This code runs simulations of a 3-layer spiking recurrent neural network
-% L0: input layer
-% L1: Sender network
-% L2: Receiver network
-% First of all, we need to compile the c code first:
+% First of all, we need to compile the c code:
 % mex EIF1DRFfastslowSyn.c
 % mex spktime2count.c
+
+% Choose which parameter to modify by uncommenting the parts of interest
+% concerning that parameter and commenting the ones concerning the other
+% parameter (see below for: '%%% Modify sigma_I_rec %%%' or 
+% '%%% Modify tau_I_decay %%%').
 
 
 
