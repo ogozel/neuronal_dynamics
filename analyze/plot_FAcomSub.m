@@ -9,14 +9,16 @@
 
 
 clear all
-close all
+% NB: comment following line to get figure(5000) with all the results for
+% all different parameter sets on the same plot
+close all 
 clc
 
 
 dataFolder = '../data_analysis/';
 
 % Choose which parameter we are interested in
-thisParam = 'sigmaRRfromIinL2';
+thisParam = 'tauIdecayinL1';
 % 'sigmaRRfromIinL1'; 'sigmaRRfromIinL2';
 % 'tauIdecayinL1'; 'tauIdecayinL2';
 
@@ -38,6 +40,7 @@ if strcmp(thisParam,'sigmaRRfromIinL1')
     paramUnit = '';
     colororder1 = winter(length(theseParams));
     colormapName = 'winter';
+    markerShape = 'square';
     
 elseif strcmp(thisParam,'sigmaRRfromIinL2')
     
@@ -46,6 +49,7 @@ elseif strcmp(thisParam,'sigmaRRfromIinL2')
     paramUnit = '';
     colororder1 = winter(length(theseParams));
     colormapName = 'winter';
+    markerShape = 'diamond';
     
 elseif strcmp(thisParam,'tauIdecayinL1')
     
@@ -54,6 +58,7 @@ elseif strcmp(thisParam,'tauIdecayinL1')
     paramUnit = 'ms';
     colororder1 = copper(length(theseParams));
     colormapName = 'copper';
+    markerShape = 'square';
     
 elseif strcmp(thisParam,'tauIdecayinL2')
     
@@ -62,6 +67,7 @@ elseif strcmp(thisParam,'tauIdecayinL2')
     paramUnit = 'ms';
     colororder1 = copper(length(theseParams));
     colormapName = 'copper';
+    markerShape = 'diamond';
     
 end
 
@@ -132,6 +138,7 @@ for p=1:length(theseParams)
     set(gca,'TickDir','out','Fontsize',18,'TickLabelInterpreter','latex')
     xticks(union(MasterPopulationR/200,0.25))
     yticks(0:5:25)
+    ylim([0 25])
     
     figure(102)
     hold on
@@ -147,6 +154,7 @@ for p=1:length(theseParams)
     set(gca,'TickDir','out','Fontsize',18,'TickLabelInterpreter','latex')
     xticks(union(MasterPopulationR/200,0.25))
     yticks(0:5:25)
+    ylim([0 25])
 end
 
 
@@ -187,18 +195,22 @@ for k=1:length(theseParams)
     thisSimParam = theseParams(k);
     thisMean_predPerf = CS_meanPredPerfPerPopR(discSize,k);
     thisSEM_predPerf = CS_semPredPerfPerPopR(discSize,k);
-    errorbar(thisSimParam,thisMean_predPerf,thisSEM_predPerf,...
+%     errorbar(thisSimParam,thisMean_predPerf,thisSEM_predPerf,...
+%         'DisplayName',[paramName,' = ',num2str(theseParams(k)),paramUnit],...
+%         'color',colororder1(k,:),'Linewidth',2)
+    plot(thisSimParam,thisMean_predPerf,...
         'DisplayName',[paramName,' = ',num2str(theseParams(k)),paramUnit],...
-        'color',colororder1(k,:),'Linewidth',2)
+        'color',colororder1(ceil(length(theseParams)/2),:),'Linewidth',2,...
+        'Marker',markerShape)
 end
 xlabel(thisParam)
 ylabel('Prediction performance [%] (\mu \pm SEM)')
 box off
 set(gca,'TickDir','out','FontSize',12)
-colormap(colormapName)
-c = colorbar('Ticks',linspace(0,1,length(theseParams)),'TickLabels',theseParams);
-c.Label.String = paramName;
-c.Label.FontSize = 12;
+% colormap(colormapName)
+% c = colorbar('Ticks',linspace(0,1,length(theseParams)),'TickLabels',theseParams);
+% c.Label.String = paramName;
+% c.Label.FontSize = 12;
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -268,8 +280,10 @@ set(gca,'TickDir','out','FontSize',12)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Prediction performance as a function of PR in Sender (L1) minus PR in
 % Receiver (L2)
+% NB: if not 'close all', run for each parameter set to get all results on
+% the same plot
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-figure()
+figure(5000)
 hold on
 for k=1:length(theseParams)
     thisPRinL1 = meanPR_L1(discSize,k); % within-area PR in L1
@@ -277,9 +291,13 @@ for k=1:length(theseParams)
     thisMean_predPerf = CS_meanPredPerfPerPopR(discSize,k);
     thisSEM_predPerf = CS_semPredPerfPerPopR(discSize,k);
     
-    errorbar(thisPRinL1-thisPRinL2,thisMean_predPerf,thisSEM_predPerf,...
+%     errorbar(thisPRinL1-thisPRinL2,thisMean_predPerf,thisSEM_predPerf,...
+%         'DisplayName',[paramName,' = ',num2str(theseParams(k)),paramUnit],...
+%         'color',colororder1(k,:),'Linewidth',2)
+    plot(thisPRinL1-thisPRinL2,thisMean_predPerf,...
         'DisplayName',[paramName,' = ',num2str(theseParams(k)),paramUnit],...
-        'color',colororder1(k,:),'Linewidth',2)
+        'color',colororder1(ceil(length(theseParams)/2),:),'Linewidth',2,...
+        'Marker',markerShape)
 end
 xlabel('Sender shared PR - Receiver shared PR')
 ylabel('Prediction performance [%] (\mu \pm SEM)')
