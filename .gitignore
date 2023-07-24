@@ -1,5 +1,9 @@
 # Ignore the folder with the data produced during analysis
 data_analysis/
 
+# Ignore the folders with the data copied from the HPC cluster
+data_cluster_sigmaI/
+data_cluster_tauIdecay/
+
 # Ignore autosave files created by Matlab
 *.asv
