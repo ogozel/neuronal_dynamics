@@ -1,0 +1,5 @@
+# Ignore the folder with the data produced during analysis
+data_analysis/
+
+# Ignore autosave files created by Matlab
+*.asv
