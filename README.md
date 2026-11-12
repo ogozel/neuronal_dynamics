@@ -1,6 +1,6 @@
 # neuronal_dynamics
 
-Code for ["Between-area communication through the lens of within-area neuronal dynamics"](https://www.biorxiv.org/content/10.1101/2022.04.11.487906v3), Gozel and Doiron, *bioRxiv*, 2023.
+Code for ["Between-area communication through the lens of within-area neuronal dynamics"](https://www.science.org/doi/abs/10.1126/sciadv.adl6120?referrer=https%3A%2F%2Fscholar.google.com%2F), Gozel and Doiron, Science Advances, 2024.
 
 
 ## simulate
